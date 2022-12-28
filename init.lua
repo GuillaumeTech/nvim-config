@@ -71,7 +71,7 @@ require('packer').startup(function(use)
   end
 end)
 
-require('core.options') -- vim options setup
+require('config.core.options') -- vim options setup
 
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
@@ -174,7 +174,7 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
-require('core.keymaps') -- vim keysmaps 
+require('config.core.keymaps') -- vim keysmaps 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
