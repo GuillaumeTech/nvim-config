@@ -63,7 +63,9 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
-
+  use "nvim-tree/nvim-web-devicons"
+  use 'tpope/vim-surround'
+  use 'nvim-tree/nvim-tree.lua'
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -152,6 +154,8 @@ require('indent_blankline').setup {
 
 require('config.plugins.gitsigns')
 require('config.plugins.telescope')
+require('config.plugins.nvim-tree')
+
 
 -- Enable telescope fzf native, if installed
 
@@ -222,7 +226,7 @@ require('nvim-treesitter.configs').setup {
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP settings.
@@ -276,11 +280,11 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-     clangd = {},
+  clangd = {},
   -- gopls = {},
-     pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
-     tsserver = {},
+  tsserver = {},
 
   sumneko_lua = {
     Lua = {
