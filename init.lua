@@ -283,6 +283,7 @@ local servers = {
   clangd = {},
   -- gopls = {},
   pyright = {},
+  gopls = {},
   -- rust_analyzer = {},
   tsserver = {},
 
